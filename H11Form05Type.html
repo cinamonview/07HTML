@@ -13,10 +13,10 @@
 			<col style="width:70%" />	
 		</colgroup>		 
 		<tr>
-			<td>placeholder</td>
+			<label for="place"><td>placeholder</td></label>
 			<td>
 				<!-- 입력값이 없을때 입력힌트를 보여줌  -->
-				<input type="text" name="i1" placeholder="힌트를 표시합니다" />
+				<input type="text" name="i1" id="place" placeholder="힌트를 표시합니다" />
 			</td>
 		</tr>
 		<tr>
@@ -99,6 +99,22 @@
 				날짜 : <input type="date" name="i10"><br>
 				시간 : <input type="time" name="i11"><br>
 			</td>
+		</tr>
+		<!-- 
+		jQuery.com에서 제공하는 ui를 이용해서 DatePicker 구현하기 -->
+		<tr>
+			<td>jQuery Date picker</td>
+			<td>
+				<input type="text" id="datepicker" size="30">
+				<select id="format">
+					<option value="mm/dd/yy">Default - mm/dd/yy</option>
+					<option value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
+					<option value="d M, y">Short - d M, y</option>
+					<option value="d MM, y">Medium - d MM, y</option>
+					<option value="DD, d MM, yy">Full - DD, d MM, yy</option>
+					<option value="'day' d 'of' MM 'in the year' yy">With text - 'day' d 'of' MM 'in the year' yy</option>
+  				</select>
+			</td>
 		</tr>		 
 		<tr>
 			<td colspan="2" style="text-align: center;">
@@ -107,6 +123,18 @@
 		</tr>	
 	</table>
 	</form>	
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.14.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/ui/1.14.2/jquery-ui.js"></script>
+<script>
+$( function() {
+$( "#datepicker" ).datepicker();
+$( "#format" ).on( "change", function() {
+	$( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+});
+} );
+</script>
 </body>
 </html>
 
